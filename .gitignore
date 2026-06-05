@@ -1,0 +1,11 @@
+*
+!.gitignore
+
+!/api/
+!/api/**
+!/backend/
+!/backend/**
+!/frontend/
+!/frontend/**
+!/config.json
+!/main.py
