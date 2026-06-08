@@ -90,11 +90,12 @@ if __name__ == "__main__":
     import uvicorn
 
     is_frozen = getattr(sys, "frozen", False)
+    enable_reload = os.getenv("OCR_API_RELOAD", "").lower() in {"1", "true", "yes"}
     uvicorn.run(
         app if is_frozen else "main:app",
         host="0.0.0.0",
         port=8000,
-        reload=not is_frozen,
+        reload=enable_reload and not is_frozen,
         log_level="info",
         ws_ping_interval=None,
         ws_ping_timeout=None,

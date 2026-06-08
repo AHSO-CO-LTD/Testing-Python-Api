@@ -34,11 +34,9 @@ from PIL import Image, ImageTk
 import cvzone
 from cvzone.Utils import putTextRect
 
-# --- GUI (Deep_Learning_Tool dùng PyQt5 nội bộ) ---
-from PyQt5 import QtCore, QtGui, QtWidgets, uic
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+# NOTE: PyQt5 imports removed from main.py
+# PyQt5 is still used internally by Deep_Learning_Tool in api/app.py
+# but should not be imported in the main entry point for better separation
 
 # ===== END SAFE IMPORT ZONE =====
 
@@ -87,11 +85,12 @@ if __name__ == "__main__":
     import uvicorn
 
     is_frozen = getattr(sys, "frozen", False)
+    enable_reload = os.getenv("OCR_API_RELOAD", "").lower() in {"1", "true", "yes"}
     uvicorn.run(
         app if is_frozen else "main:app",
         host="0.0.0.0",
         port=8000,
-        reload=not is_frozen,
+        reload=enable_reload and not is_frozen,
         log_level="info",
         ws_ping_interval=None,
         ws_ping_timeout=None,
