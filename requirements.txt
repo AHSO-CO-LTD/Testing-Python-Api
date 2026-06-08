@@ -1,0 +1,36 @@
+# Supported Python: 3.11
+# Do not use Python 3.14 for this project because several pinned packages
+# such as numpy, torch, torchvision, PyQt5, and ultralytics are not compatible.
+
+# Core API
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# AI / OCR
+numpy==1.24.3
+pandas==2.1.0
+opencv-python==4.8.1.78
+torch==2.0.1
+torchvision==0.15.2
+ultralytics==8.0.202
+torchinfo==1.8.0
+scikit-learn==1.3.2
+tqdm==4.66.1
+pyyaml==6.0.1
+Pillow==10.0.1
+cvzone==1.6.1
+
+# Desktop / Qt
+PyQt5==5.15.9
+PyQt5-stubs==5.15.6.0
+
+# Industrial / integration utilities
+pymodbus==3.6.1
+pymcprotocol==0.3.0
+pymysql==1.1.0
+requests==2.31.0
+websocket-client==1.6.4
+psutil==5.9.6
+
+# Windows-only runtime
+pywin32==306; platform_system == "Windows"
